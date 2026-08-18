@@ -112,6 +112,7 @@ CREATE TABLE itinerary_days (
   custom_land_arrangement_id BIGINT REFERENCES custom_land_arrangements(id) ON DELETE CASCADE,
   day_number INTEGER NOT NULL,
   title VARCHAR(150),
+  CHECK (package_id IS NOT NULL OR custom_land_arrangement_id IS NOT NULL),
   created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
   updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
